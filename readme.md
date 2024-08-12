@@ -25,7 +25,6 @@ This repository contains two simple applications that demonstrate containerizati
 - **Endpoint**: /reverse
 - **Response**:
   ```json
-  Copy code
   {
     "id": "1",
     "message": "dlrow olleH"
