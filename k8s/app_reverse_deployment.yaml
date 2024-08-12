@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app_reverse-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: app_reverse
+  template:
+    metadata:
+      labels:
+        app: app_reverse
+    spec:
+      containers:
+      - name: app_reverse
+        image: sangya26/app_reverse:latest
+        ports:
+        - containerPort: 5000
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: app_reverse-service
+spec:
+  selector:
+    app: app_reverse
+  ports:
+  - protocol: TCP
+    port: 5000
+    targetPort: 5000
