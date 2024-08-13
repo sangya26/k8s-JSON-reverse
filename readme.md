@@ -44,8 +44,7 @@ This repository contains two simple applications that demonstrate containerizati
 
 ## Step 1: Clone the Repository
 ```
-git clone https://github.com/yourusername/kubernetes-json-reverser.git
-cd kubernetes-json-reverser
+git clone https://github.com/yourusername/k8s-JSON-reverse.git
 ```
 ```
 ## Step 2: Build and Push Docker Images
@@ -53,7 +52,7 @@ Replace your-dockerhub-username with your Docker Hub username or leave it as lat
 
 ```
 docker build -t your-dockerhub-username/app:latest -f Dockerfile.app .
-docker build -t your-dockerhub-username/app_reverse:latest -f Dockerfile.app2 .
+docker build -t your-dockerhub-username/app_reverse:latest -f Dockerfile.app_reverse .
 
 docker push your-dockerhub-username/app:latest
 docker push your-dockerhub-username/app_reverse:latest
@@ -74,8 +73,8 @@ Deploy the applications using kubectl:
 ```
 bash
 Copy code
-kubectl apply -f app1-deployment.yaml
-kubectl apply -f app2-deployment.yaml
+kubectl apply -f app_deployment.yaml
+kubectl apply -f app_reverse_deployment.yaml
 ```
 ## Step 5: Test the Applications
 Use the provided script to build, deploy, and test the applications.
@@ -93,15 +92,15 @@ This script will:
 ## Step 6: Access the Applications
 If you need to access the services manually:
 
-1. App1: Retrieve JSON from http://app1-service:5000/json
-2. App2: Retrieve reversed JSON from http://app2-service:5000/reverse
+1. App1: Retrieve JSON from http://app-service:5000/json
+2. App2: Retrieve reversed JSON from http://app_reverse-service:5000/reverse
 
 To access the services externally (for example, with Minikube), you can use:
 ```
 - bash
 - Copy code
-- minikube service app1-service --url
-- minikube service app2-service --url
+- minikube service app-service --url
+- minikube service app_reverse-service --url
 ```
 Cleanup
 
@@ -109,8 +108,8 @@ To clean up the Kubernetes resources, run:
 ```
 - bash
 - Copy code
-- kubectl delete -f app1-deployment.yaml
-- kubectl delete -f app2-deployment.yaml
+- kubectl delete -f app-deployment.yaml
+- kubectl delete -f app_reverse-deployment.yaml
 ```
 If using Minikube, you can also stop the cluster:
 ```
