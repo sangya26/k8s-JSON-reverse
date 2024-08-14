@@ -20,7 +20,6 @@ This repository contains two simple applications that demonstrate containerizati
   }
   ```
 
-
 ### App2
 - **Endpoint**: /reverse
 - **Response**:
