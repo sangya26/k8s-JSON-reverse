@@ -20,6 +20,7 @@ This repository contains two simple applications that demonstrate containerizati
   }
   ```
 
+
 ### App2
 - **Endpoint**: /reverse
 - **Response**:
@@ -37,7 +38,7 @@ This repository contains two simple applications that demonstrate containerizati
 - Kubectl for interacting with the Kubernetes cluster
 - A Docker Hub account (optional, if you want to push images to Docker Hub)
 
-
+```
 
 # Setup Instructions
 
@@ -45,7 +46,7 @@ This repository contains two simple applications that demonstrate containerizati
 ```
 git clone https://github.com/yourusername/k8s-JSON-reverse.git
 ```
-```
+
 ## Step 2: Build and Push Docker Images
 Replace your-dockerhub-username with your Docker Hub username or leave it as latest for local use.
 
@@ -61,17 +62,15 @@ docker push your-dockerhub-username/app_reverse:latest
 ## Step 3: Start Kubernetes Cluster
 - Using Minikube:
   bash
-- Copy code
   minikube start
 - Using Kind:
   bash
-- Copy code
   kind create cluster
+
 ## Step 4: Deploy Applications to Kubernetes
 Deploy the applications using kubectl:
 ```
 bash
-Copy code
 kubectl apply -f app_deployment.yaml
 kubectl apply -f app_reverse_deployment.yaml
 ```
@@ -79,7 +78,6 @@ kubectl apply -f app_reverse_deployment.yaml
 Use the provided script to build, deploy, and test the applications.
 ```
 bash
-Copy code
 chmod +x script.sh
 ./script.sh
 ```
@@ -97,7 +95,6 @@ If you need to access the services manually:
 To access the services externally (for example, with Minikube), you can use:
 ```
 - bash
-- Copy code
 - minikube service app-service --url
 - minikube service app_reverse-service --url
 ```
@@ -106,16 +103,14 @@ Cleanup
 To clean up the Kubernetes resources, run:
 ```
 - bash
-- Copy code
 - kubectl delete -f app-deployment.yaml
 - kubectl delete -f app_reverse-deployment.yaml
 ```
 If using Minikube, you can also stop the cluster:
 ```
 bash
-Copy code
 minikube stop
-``````
+```
 ### Notes
 
 - Ensure that Docker is running and that you are authenticated with Docker Hub if you plan to push images.
